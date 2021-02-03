@@ -8,7 +8,22 @@ void main() => runApp(MaterialApp(home: WebViewExample()));
 
 const String kNavigationExamplePage = '''
 <!DOCTYPE html><html>
-<head><title>Navigation Delegate Example</title></head>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
+  function search(){
+    var url = document.getElementById("url");
+    
+    if (url.value.indexOf('https://') == -1){
+      location.href = "https://" + url.value;
+    } else{
+       location.href=url.value;
+      }
+    
+  }
+  </script>
+<head>
+<meta charset="utf-8">
+<title>Navigation Delegate Example</title></head>
 <body>
 <p>
 The navigation delegate is set to block navigation to the youtube website.
@@ -20,7 +35,8 @@ The navigation delegate is set to block navigation to the youtube website.
 <ul><a href="http://192.168.34.103:8080/login">마을로/</a></ul>
 <ul><a href="https://visitlog.kr/">마을로2/</a></ul>
 </ul>
-<input name="url" type="text"/>
+<input id="url" type="text"/><br/>
+<button type="button" onclick="search();">버튼이다</button>
 </body>
 </html>
 ''';
